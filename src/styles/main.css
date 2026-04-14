@@ -1,28 +1,27 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
+  --light-color: #e2f0ff;
+  --dark-color: rgb(34, 49, 82);
   --accent-border: rgba(170, 59, 255, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow-color: rgb(169, 170, 172);
+  --shadow-low: var(--shadow-color) 0 4px 2px -2px;
   --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+    var(--shadow-color) 0 10px 15px -3px, var(--shadow-color) 0 4px 6px -2px,
+    var(--shadow-color) 0 -10px 15px -3px;
 
+  --border-rad: 10px;
   --font:
     "Akaya Telivigala", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
     "Helvetica Neue", sans-serif;
-  --size-pri: clamp(0.8rem, 0.8rem + 0.4vw, 1.2rem);
+  --size: clamp(0.8rem, 0.8rem + 0.4vw, 1.2rem);
   letter-spacing: 0.1em;
   line-height: 1.3em;
 
-  font-size: var(--size-pri);
+  font-size: var(--size);
   font-family: var(--font);
   color-scheme: light dark;
-  color: var(--text);
+  color: var(--dark-color);
   background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -30,7 +29,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
     --text-h: #f3f4f6;
@@ -48,7 +47,7 @@
   #social .button-icon {
     filter: invert(1) brightness(2);
   }
-}
+} */
 
 @font-face {
   font-family: "Akaya";
@@ -62,29 +61,50 @@
 
 body {
   margin: 0;
+  background-color: var(--light-color);
 }
 
 #root {
-  width: 1126px;
+  width: min(90%, 1200px);
   max-width: 100%;
-  margin: 0 auto;
+  margin: auto;
   text-align: center;
   border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 h1,
-h2 {
+h2,
+h3 {
   font-weight: 500;
   color: var(--text-h);
 }
 
 h1 {
-  font-size: calc(3 * var(--size-pri));
+  font-size: calc(3 * var(--size));
 }
 
 h2 {
-  font-size: calc(2 * var(--size-pri));
+  font-size: calc(2 * var(--size));
+}
+
+h3 {
+  font-size: calc(1.5 * var(--size));
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input {
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  max-width: 70%;
+  max-height: 1.5rem;
+  border-radius: var(--border-rad);
+  border: 1px solid var(--dark-color);
+  padding: 0 calc(0.5 * var(--size));
 }
