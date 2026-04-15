@@ -14,6 +14,7 @@ export function Personal({ onToggle, isVisible, data, setData }) {
               id="name"
               type="text"
               onChange={(e) => setData({ ...data, name: e.target.value })}
+              value={data.name}
             />
           </label>
           <label htmlFor="phone">
@@ -22,6 +23,7 @@ export function Personal({ onToggle, isVisible, data, setData }) {
               id="phone"
               type="tel"
               onChange={(e) => setData({ ...data, phone: e.target.value })}
+              value={data.phone}
             />
           </label>
           <label htmlFor="mail">
@@ -30,6 +32,7 @@ export function Personal({ onToggle, isVisible, data, setData }) {
               id="mail"
               type="email"
               onChange={(e) => setData({ ...data, email: e.target.value })}
+              value={data.email}
             />
           </label>
         </>
@@ -39,7 +42,12 @@ export function Personal({ onToggle, isVisible, data, setData }) {
 }
 
 export function Educational({ onToggle, isVisible, data, setData }) {
-  console.log(data, setData);
+  const onChange = (e) =>
+    setData((prev) =>
+      prev.map((item) =>
+        item.id === data.id ? { ...item, name: e.target.value } : item,
+      ),
+    );
   return (
     <div className="educational-info">
       <h2>
@@ -52,7 +60,8 @@ export function Educational({ onToggle, isVisible, data, setData }) {
             <input
               id="formation"
               type="text"
-              onChange={(e) => setData({ ...data, name: e.target.value })}
+              onChange={onChange}
+              value={data.name}
             />
           </label>
           <label htmlFor="date">
@@ -61,6 +70,7 @@ export function Educational({ onToggle, isVisible, data, setData }) {
               id="date"
               type="tel"
               onChange={(e) => setData({ ...data, year: e.target.value })}
+              value={data.year}
             />
           </label>
           <label htmlFor="school">
@@ -69,8 +79,10 @@ export function Educational({ onToggle, isVisible, data, setData }) {
               id="school"
               type="email"
               onChange={(e) => setData({ ...data, school: e.target.value })}
+              value={data.school}
             />
           </label>
+          <Buttons />
         </>
       )}
     </div>
@@ -83,6 +95,15 @@ export function Professional({ onToggle, isVisible, data, setData }) {
       <h2>
         <button onClick={onToggle}>Pro</button>
       </h2>
+    </div>
+  );
+}
+
+function Buttons() {
+  return (
+    <div className="editor-buttons">
+      <button>New</button>
+      <button>Delete</button>
     </div>
   );
 }

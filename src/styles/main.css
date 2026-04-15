@@ -108,3 +108,7 @@ input {
   border: 1px solid var(--dark-color);
   padding: 0 calc(0.5 * var(--size));
 }
+
+input:focus {
+  outline: 2px solid var(--dark-color);
+}

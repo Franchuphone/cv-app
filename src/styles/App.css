@@ -1,7 +1,8 @@
 .container {
   display: grid;
-  grid-template-columns: minmax(30%, max-content) 2fr;
+  grid-template-columns: 1fr 2fr;
   gap: var(--size);
+  margin: var(--size) auto;
 
   @media (max-width: 800px) {
     grid-template-columns: 1fr;
@@ -34,5 +35,9 @@ main {
 
   > div:not(:last-child) {
     border-bottom: 2px solid var(--dark-color);
+  }
+
+  h1::after {
+    content: "\00A0";
   }
 }

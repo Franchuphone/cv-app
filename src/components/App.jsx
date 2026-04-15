@@ -45,12 +45,7 @@ function App() {
             <Educational
               onToggle={() => onToggle("educational")}
               data={data}
-              setData={() =>
-                setDataEducational(
-                  ...dataEducational,
-                  dataEducational.find((item) => item.id === data.id),
-                )
-              }
+              setData={setDataEducational}
               isVisible={isVisible}
               key={data.id}
             />
