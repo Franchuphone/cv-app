@@ -1,6 +1,6 @@
 import "../styles/Preview.css";
 
-export default function Preview({ personal, educational, profesional }) {
+export function Preview({ personal, educational, profesional }) {
   return (
     <>
       <h1>{personal.name}</h1>
@@ -30,9 +30,9 @@ export default function Preview({ personal, educational, profesional }) {
 function PreviewEdu({ data }) {
   return (
     <div className="preview-edu">
-      <h4>{data.name}</h4>
+      <h4>{data.curriculum}</h4>
       <p>{data.school}</p>
-      <p>{data.year}</p>
+      <p>{data["year of obtention"]}</p>
     </div>
   );
 }
@@ -43,7 +43,7 @@ function PreviewExp({ data }) {
       <h4>{data.job}</h4>
       <p>{data.company}</p>
       <p>
-        {data.dates[0]} - {data.dates[1]}
+        {data.dates[0]} <br />→ {data.dates[1]}
       </p>
       <p>
         {data.skills.map((skill, index) => (
@@ -67,6 +67,6 @@ function PreviewSkill({ skills, skill, index }) {
   );
 }
 
-function cleanWord(string) {
+export function cleanWord(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }

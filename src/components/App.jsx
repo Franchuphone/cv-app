@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../styles/App.css";
-import Preview from "./Preview";
+import { Preview } from "./Preview";
 import { Personal, Educational, Professional } from "./Editor";
 
 function App() {
@@ -12,8 +12,8 @@ function App() {
     [dataEducational, setDataEducational] = useState([
       {
         school: "Nowhere Land",
-        year: 1900,
-        name: "Practical ways to be invisible",
+        "year of obtention": 1900,
+        curriculum: "Practical ways to be invisible",
         id: crypto.randomUUID(),
       },
     ]),
@@ -40,7 +40,6 @@ function App() {
           isVisible={isVisible}
         />
         {dataEducational.map((data) => {
-          console.log(dataEducational.find((item) => item.id === data.id));
           return (
             <Educational
               onToggle={() => onToggle("educational")}
@@ -51,12 +50,17 @@ function App() {
             />
           );
         })}
-        <Professional
-          onToggle={() => onToggle("professional")}
-          data={dataProfessional}
-          setData={setDataProfessional}
-          isVisible={isVisible}
-        />
+        {dataProfessional.map((data) => {
+          return (
+            <Professional
+              onToggle={() => onToggle("professional")}
+              data={data}
+              setData={setDataProfessional}
+              isVisible={isVisible}
+              key={data.id}
+            />
+          );
+        })}
       </header>
       <main>
         <Preview

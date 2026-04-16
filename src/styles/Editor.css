@@ -1,6 +1,6 @@
 .personal-info,
 .educational-info,
-.profesional-info {
+.professional-info {
   display: grid;
   grid-template: auto / 1fr;
   justify-items: center;
@@ -21,7 +21,7 @@
   border-radius: var(--border-rad) var(--border-rad) 0 0;
 }
 
-.profesional-info > h2 {
+.professional-info > h2 {
   border-radius: 0 0 var(--border-rad) var(--border-rad);
 }
 

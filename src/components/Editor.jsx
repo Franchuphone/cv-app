@@ -1,4 +1,9 @@
 import "../styles/Editor.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useState } from "react";
+import { format } from "date-fns";
+import { cleanWord } from "./Preview";
 
 export function Personal({ onToggle, isVisible, data, setData }) {
   return (
@@ -8,16 +13,11 @@ export function Personal({ onToggle, isVisible, data, setData }) {
       </h2>
       {isVisible === "personal" && (
         <>
-          <label htmlFor="name">
-            <div>Full name</div>
-            <input
-              id="name"
-              type="text"
-              onChange={(e) => setData({ ...data, name: e.target.value })}
-              value={data.name}
-            />
-          </label>
-          <label htmlFor="phone">
+          <TextInput param="name" setData={setData} data={data} />
+          <TextInput param="phone" setData={setData} data={data} />
+          <TextInput param="email" setData={setData} data={data} />
+
+          {/* <label htmlFor="phone">
             <div>Phone number</div>
             <input
               id="phone"
@@ -34,7 +34,7 @@ export function Personal({ onToggle, isVisible, data, setData }) {
               onChange={(e) => setData({ ...data, email: e.target.value })}
               value={data.email}
             />
-          </label>
+          </label> */}
         </>
       )}
     </div>
@@ -42,46 +42,25 @@ export function Personal({ onToggle, isVisible, data, setData }) {
 }
 
 export function Educational({ onToggle, isVisible, data, setData }) {
-  const onChange = (e) =>
-    setData((prev) =>
-      prev.map((item) =>
-        item.id === data.id ? { ...item, name: e.target.value } : item,
-      ),
-    );
   return (
     <div className="educational-info">
       <h2>
-        <button onClick={onToggle}>Edu</button>
+        <button onClick={onToggle}>Study</button>
       </h2>
       {isVisible === "educational" && (
         <>
-          <label htmlFor="formation">
-            <div>Curriculum name</div>
-            <input
-              id="formation"
-              type="text"
-              onChange={onChange}
-              value={data.name}
-            />
-          </label>
-          <label htmlFor="date">
-            <div>Year of obtention</div>
-            <input
-              id="date"
-              type="tel"
-              onChange={(e) => setData({ ...data, year: e.target.value })}
-              value={data.year}
-            />
-          </label>
-          <label htmlFor="school">
+          <TextInput param="curriculum" setData={setData} data={data} />
+          <TextInput param="school" setData={setData} data={data} />
+          <TextInput param="year of obtention" setData={setData} data={data} />
+          {/* <label htmlFor="school">
             <div>School name</div>
             <input
               id="school"
               type="email"
-              onChange={(e) => setData({ ...data, school: e.target.value })}
+              onChange={(e) => onChange(e, "school", setData, data.id)}
               value={data.school}
             />
-          </label>
+          </label> */}
           <Buttons />
         </>
       )}
@@ -91,13 +70,53 @@ export function Educational({ onToggle, isVisible, data, setData }) {
 
 export function Professional({ onToggle, isVisible, data, setData }) {
   return (
-    <div className="profesional-info">
+    <div className="professional-info">
       <h2>
-        <button onClick={onToggle}>Pro</button>
+        <button onClick={onToggle}>Carreer</button>
       </h2>
+      {isVisible === "professional" && (
+        <>
+          <TextInput param="job" setData={setData} data={data} />
+          <TextInput param="company" setData={setData} data={data} />
+          <label htmlFor="date">
+            <div>Duration</div>
+            <DurationPicker setData={setData} id={data.id} />
+          </label>
+          <label htmlFor="skills">
+            <div>Skills</div>
+          </label>
+          {/* <TextInput param="year of obtention" setData={setData} data={data} /> */}
+
+          {/* {() => (param = "job")}
+          {console.log(param)}
+          <label htmlFor={param}>
+            <div>Job</div>
+            <input
+              id={param}
+              type="text"
+              onChange={(e) => onChange(e, { param }, setData, data.id)}
+              value={data[param]}
+            />
+          </label> */}
+
+          <Buttons />
+        </>
+      )}
     </div>
   );
 }
+
+const onChange = (e, prop, func, id) => {
+  func((prev) =>
+    prev.map((item) =>
+      item.id === id
+        ? { ...item, [prop]: e.target ? e.target.value : e }
+        : item,
+    ),
+  );
+};
+
+let param;
 
 function Buttons() {
   return (
@@ -105,5 +124,45 @@ function Buttons() {
       <button>New</button>
       <button>Delete</button>
     </div>
+  );
+}
+
+function DurationPicker({ setData, id }) {
+  const [startDate, setStartDate] = useState(null),
+    [endDate, setEndDate] = useState(null),
+    dates = (x, y) => [format(x, "yyyy-MM-dd"), format(y, "yyyy-MM-dd")];
+
+  return (
+    <DatePicker
+      selectsRange
+      startDate={startDate}
+      endDate={endDate}
+      onChange={([start, end]) => {
+        setStartDate(start);
+        setEndDate(end);
+        onChange(dates(start, end), "dates", setData, id);
+      }}
+    />
+  );
+}
+
+function TextInput({ param, setData, data }) {
+  return (
+    <>
+      <label htmlFor={param}>
+        <div> {cleanWord(param)}</div>
+        <input
+          id={param}
+          type="text"
+          onChange={(e) =>
+            param === "name" || param === "phone" || param === "email"
+              ? setData({ ...data, [param]: e.target.value })
+              : onChange(e, param, setData, data.id)
+          }
+          // onChange={(e) => onChange(e, param, setData, data.id)}
+          value={data[param]}
+        />
+      </label>
+    </>
   );
 }
