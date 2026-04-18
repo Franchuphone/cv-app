@@ -2,21 +2,30 @@
 
 # <img src="https://www.theodinproject.com/assets/icons/odin-icon-22b41941.svg"> <br>
 
-# ☀️
+# 🚀 CV Application
 
 ---
 
-[Live Demo](here) <!-- TODO: Add actual live demo link if available (e.g., GitHub Pages) -->
+[Live Demo](https://cv-app.camano-daniel.workers.dev/) <!-- TODO: Add actual live demo link if available (e.g., GitHub Pages) -->
 
 </div>
 
 ## 📖 Overview
 
+The CV Application is a single-page web application designed to help users easily create and manage their professional curriculum vitae. Built with React and Vite, it provides an intuitive interface for inputting personal details, educational background, work experience, skills, and more. The application aims to offer a smooth and dynamic user experience, allowing for real-time updates and a clear preview of the CV content.
+
 ## ✨ Features
+
+- **Dynamic CV Generation:** Easily input and update personal, educational, and professional details to build a comprehensive CV.
+- **Modular Sections:** Organize information into distinct, editable sections for clarity and ease of management.
+- **Real-time Preview:** View instant updates to your CV content as you type, ensuring accuracy and desired formatting.
+- **Responsive Design:** An adaptable layout ensuring usability across various devices, from desktops to mobile phones.
+- **Clean and Modern UI:** A user-friendly interface powered by React components for an efficient editing experience.
+- **Print-friendly Layout:** Designed for easy printing to PDF or paper, providing a professional output.
 
 ## 🔧 Future improvements
 
-- 🎯 \*\*
+- 🎯 \*Adding configurable sections\*
 
 ## 🛠️ Tech Stack
 
@@ -26,22 +35,23 @@
 
 **Build Tools:**
 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Webpack](https://img.shields.io/badge/Webpack-8DD6F9?style=for-the-badge&logo=webpack&logoColor=black) ![Babel](https://img.shields.io/badge/Babel-F9DC3E?style=for-the-badge&logo=babel&logoColor=black) ![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white) ![NPM](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
+[![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev/) [![Vite](https://img.shields.io/badge/Vite-5.2.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/) [![ESLint](https://img.shields.io/badge/ESLint-8.57.0-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)](https://eslint.org/) ![NPM](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
 
 ## 📁 Project Structure
 
 ```
-repo/
-├── src/                    # Source code directory
-│   ├── main.jsx            # Main application entry point
-│   ├── components/         # React UI components
-│   ├── styles/             # Global or component-specific CSS files
-│   └── assets/             # Images, fonts, or other static assets
-├── index.html              # Html aggregator
-├── package.json            # Project metadata and dependencies
-├── package-lock.json       # npm dependency lock file
-├── eslint.config.js        # ESLint configuration for code quality
-└── vite.config.js          # Vite config file
+cv-app/
+├── public/                # Static assets (e.g., favicon.ico, logo images)
+├── src/                   # Main application source code
+│   ├── assets/            # Dynamic assets
+│   ├── components/        # React components and Js modules
+│   ├── styles/            # CSS stylesheets
+│   └──main.jsx            # Entry point for the React application (renders App)
+├── index.html             # The main HTML file served by Vite
+├── package.json           # Project metadata, scripts, and dependencies
+├── package-lock.json      # Records the exact dependency tree
+├── vite.config.js         # Vite build and development server configuration
+└── eslint.config.js       # ESLint configuration for code quality
 ```
 
 ## 📄 License
@@ -50,8 +60,7 @@ No particular license, just keep in mind to respect the work of others and just 
 
 ## 🙏 Acknowledgments
 
-- **[Webpack](https://webpack.js.org/)**: For the powerful and flexible module bundler.
-- **[Babel](https://babeljs.io/)**: For enabling the use of modern JavaScript features.
+- **[Vite Team](https://vite.dev/)**: For the incredibly fast and efficient build tool.
 - **[React](https://react.dev/)**: For the useful and versatile Javascript framework.
 - **[TheOdinProject](https://www.theodinproject.com/)**: For the perfect curriculum to learn about Webdev Fullstack.
 
