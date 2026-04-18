@@ -14,7 +14,7 @@ main,
 header {
   border-radius: var(--border-rad);
   box-shadow: var(--shadow);
-  background-color: white;
+  background-color: var(--background-color);
   max-height: fit-content;
 }
 

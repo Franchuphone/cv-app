@@ -12,6 +12,7 @@
   --shadow:
     var(--shadow-color) 0 10px 15px -3px, var(--shadow-color) 0 4px 6px -2px,
     var(--shadow-color) 0 -10px 15px -3px;
+  --background-color: white;
 
   --border-rad: 10px;
   --font:
@@ -34,25 +35,24 @@
   scrollbar-width: none;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
+    --light-color: rgb(34, 49, 82);
+    --light-color-filt: brightness(0) saturate(100%) invert(13%) sepia(9%)
+      saturate(5743%) hue-rotate(189deg) brightness(99%) contrast(86%);
+    --dark-color: #f5f8fc;
+    --dark-color-filt: brightness(0) saturate(100%) invert(92%) sepia(2%)
+      saturate(1852%) hue-rotate(196deg) brightness(107%) contrast(97%);
+    --accent-color-1: rgb(179, 192, 221);
+    --accent-color-2: rgb(98, 125, 185);
+    --shadow-color: rgb(169, 170, 172);
+    --shadow-low: var(--shadow-color) 0 4px 2px -2px;
     --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+      var(--shadow-color) 0 10px 15px -3px, var(--shadow-color) 0 4px 6px -2px,
+      var(--shadow-color) 0 -10px 15px -3px;
+    --background-color: transparent;
   }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-} */
+}
 
 @font-face {
   font-family: "Akaya";
@@ -88,8 +88,7 @@ body {
 h1,
 h2,
 h3 {
-  font-weight: 500;
-  color: var(--text-h);
+  font-weight: 800;
 }
 
 h1 {
@@ -106,6 +105,10 @@ h3 {
 
 button:hover {
   cursor: pointer;
+}
+
+button {
+  color: var(--light-color);
 }
 
 label {
@@ -130,7 +133,7 @@ textarea {
 
 input,
 textarea {
-  background-color: white;
+  background-color: var(--background-color);
   color: var(--dark-color);
   width: 80%;
   /* max-height: 1.5rem; */
@@ -156,6 +159,28 @@ textarea:focus {
   background-color: var(--dark-color) !important;
 }
 
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__time-name {
+  color: var(--dark-color) !important;
+}
+
+.react-datepicker__day-name:hover,
+.react-datepicker__day:hover,
+.react-datepicker__time-name:hover {
+  color: var(--light-color) !important;
+  background-color: var(--dark-color) !important;
+}
+
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__month-text--keyboard-selected,
+.react-datepicker__quarter-text--keyboard-selected,
+.react-datepicker__year-text--keyboard-selected {
+  background-color: var(--light-color) !important;
+  color: var(--dark-color) !important;
+  border: 1px solid var(--dark-color) !important;
+}
+
 .react-datepicker__day--selected,
 .react-datepicker__day--in-selecting-range,
 .react-datepicker__day--in-range,
@@ -169,16 +194,21 @@ textarea:focus {
 .react-datepicker__year-text--in-selecting-range,
 .react-datepicker__year-text--in-range {
   background-color: var(--dark-color) !important;
-  color: #fff;
+  color: var(--light-color) !important;
 }
 
-.react-datepicker__day--keyboard-selected,
-.react-datepicker__month-text--keyboard-selected,
-.react-datepicker__quarter-text--keyboard-selected,
-.react-datepicker__year-text--keyboard-selected {
+.react-datepicker__current-month {
   background-color: var(--light-color) !important;
   color: var(--dark-color) !important;
-  border: 1px solid var(--dark-color) !important;
+}
+
+.react-datepicker__header {
+  background-color: var(--light-color) !important;
+  color: var(--dark-color) !important;
+}
+
+.react-datepicker {
+  background-color: var(--light-color) !important;
 }
 
 .react-datepicker__input-container > input {
