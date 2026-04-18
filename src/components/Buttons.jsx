@@ -1,7 +1,8 @@
-import minus from "../assets/minus-circle.1.svg";
-import plus from "../assets/plus-circle.1.svg";
-import github from "../assets/github.svg";
-import pdf from "../assets/pdf-box.svg";
+// import minus from "../assets/minus-circle.1.svg";
+// import plus from "../assets/plus-circle.1.svg";
+// import github from "../assets/github.svg";
+// import pdf from "../assets/pdf-box.svg";
+import images from "./images";
 
 export function ButtonRemoveCategory({ id, setData, data }) {
   const handleRemove = () => {
@@ -53,10 +54,10 @@ export function ButtonSkill({ data, setData }) {
   return (
     <div className="skills-buttons">
       <button onClick={removeSkill}>
-        <img src={minus} alt="" />
+        <img src={images["minus.svg"]} alt="" />
       </button>
       <button onClick={addSkill}>
-        <img src={plus} alt="" />
+        <img src={images["plus.svg"]} alt="" />
       </button>
     </div>
   );
@@ -70,7 +71,7 @@ export function ButtonGithub() {
       target="_blank"
       rel="noreferrer"
     >
-      <img src={github} alt="" />
+      <img src={images["github.svg"]} alt="" />
     </a>
   );
 }
@@ -78,7 +79,7 @@ export function ButtonGithub() {
 export function ButtonPdf() {
   return (
     <button id="button-pdf" onClick={() => window.print()}>
-      <img src={pdf} alt="" />
+      <img src={images["pdf-box.svg"]} alt="" />
     </button>
   );
 }

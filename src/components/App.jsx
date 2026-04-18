@@ -9,7 +9,7 @@ function App() {
   const InitialPersonal = new PersonalInfo(
       "Your name",
       "06 00 00 00 00",
-      "your@mail.here",
+      "your@email.here",
       "Clear and concise introduction",
     ),
     InitialEducational = new EducationalInfo(
@@ -117,10 +117,10 @@ function App() {
             educational={dataEducational}
             profesional={dataProfessional}
           />
+          <div className="export-button">
+            <ButtonPdf />
+          </div>
         </main>
-        <div className="export-button">
-          <ButtonPdf />
-        </div>
       </div>
     </>
   );

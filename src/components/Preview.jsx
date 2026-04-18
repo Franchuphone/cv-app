@@ -1,5 +1,5 @@
 import "../styles/Preview.css";
-import { usePDF } from "react-to-pdf";
+import images from "./images";
 
 export function Preview({ personal, educational, profesional }) {
   return (
@@ -33,7 +33,12 @@ function PreviewContact({ data }) {
       {Object.entries(data)
         .filter(([key]) => key !== "name")
         .map(([key, value]) => (
-          <span key={key}>{value}</span>
+          <div className="contact-info" key={key}>
+            {images[key + ".svg"] && (
+              <img src={images[key + ".svg"]} alt={key} />
+            )}
+            {value}
+          </div>
         ))}
     </>
   );

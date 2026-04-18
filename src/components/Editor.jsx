@@ -7,7 +7,6 @@ export function Personal({ data, setData }) {
   return (
     <div className="personal-info">
       <DisplayInputs data={data} setData={setData} />
-      {/* <TextAreaInput data={data} setData={setData} /> */}
     </div>
   );
 }

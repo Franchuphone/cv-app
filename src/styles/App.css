@@ -4,7 +4,6 @@
   gap: var(--size);
   margin: var(--size) auto;
   width: 100%;
-  position: relative;
 
   @media (max-width: 800px) {
     grid-template-columns: 1fr;
@@ -46,12 +45,15 @@ header {
 
 main {
   min-width: 70%;
+  position: relative;
+  overflow: hidden;
+  word-break: break-all;
 
   > div {
     padding: var(--size);
   }
 
-  > div:not(:last-child) {
+  > div:not(:nth-last-child(-n + 2)) {
     border-bottom: 2px solid var(--dark-color);
   }
 
@@ -91,7 +93,7 @@ main {
     visibility: hidden;
   }
   main,
-  main * {
+  main *:not(#button-pdf > img) {
     visibility: visible;
   }
   main {

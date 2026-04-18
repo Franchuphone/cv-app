@@ -5,17 +5,24 @@
   padding: var(--size) 0;
   row-gap: calc(0.5 * var(--size));
 
+  img {
+    display: inline-block;
+  }
+
   > * {
     flex: 1;
-    text-align: auto;
   }
 
   > *:nth-child(even) {
-    text-align: right;
+    justify-content: flex-end;
   }
 
   > *:nth-child(odd) {
-    text-align: left;
+    justify-content: flex-start;
+  }
+
+  > *:not(:last-child) {
+    font-weight: 700;
   }
 
   > *:last-child {
@@ -26,6 +33,16 @@
   @media (max-width: 500px) {
     flex-direction: column;
     align-items: center;
+  }
+}
+
+.contact-info {
+  display: flex;
+  align-items: flex-end;
+  column-gap: 0.5rem;
+
+  img:hover {
+    transform: none;
   }
 }
 

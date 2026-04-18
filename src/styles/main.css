@@ -125,7 +125,6 @@ img[src*="svg"]:hover {
 textarea {
   max-height: 200px;
   resize: vertical;
-  width: 100%;
   scrollbar-width: none;
 }
 
@@ -133,7 +132,7 @@ input,
 textarea {
   background-color: white;
   color: var(--dark-color);
-  max-width: 90%;
+  width: 80%;
   /* max-height: 1.5rem; */
   border-radius: var(--border-rad);
   border: 1px solid var(--dark-color);
