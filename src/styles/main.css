@@ -185,6 +185,21 @@ textarea:focus {
   max-width: 100%;
 }
 
+#button-start {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  border-radius: var(--border-rad);
+  font-size: calc(2 * var(--size));
+  padding: 0 var(--size);
+  margin-top: var(--size);
+}
+
+#button-start:hover {
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  outline: 0.1em solid var(--dark-color);
+}
+
 #button-github {
   background: var(--light-color);
   border-radius: 50%;
@@ -199,5 +214,15 @@ textarea:focus {
 
   > img {
     height: 100%;
+  }
+}
+
+.slideOut {
+  animation: slideOut 1s ease-in forwards;
+}
+
+@keyframes slideOut {
+  to {
+    transform: translateY(1200px);
   }
 }

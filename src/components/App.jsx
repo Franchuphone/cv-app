@@ -10,7 +10,7 @@ function App() {
       "Your name",
       "06 00 00 00 00",
       "your@email.here",
-      "Clear and concise introduction",
+      "Clear and concise introduction (max 200 characters)",
     ),
     InitialEducational = new EducationalInfo(
       "Degree name",

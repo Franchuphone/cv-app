@@ -28,6 +28,11 @@
   > *:last-child {
     flex-basis: 100%;
     text-align: center;
+    justify-content: center;
+    white-space: pre-wrap;
+    max-height: 20ch;
+    overflow-y: scroll;
+    scrollbar-width: none;
   }
 
   @media (max-width: 500px) {

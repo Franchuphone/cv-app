@@ -77,8 +77,8 @@ export function TextAreaInput({ param, data, setData }) {
       <label>
         <div>{cleanWord(param)}</div>
         <textarea
-          name=""
-          id="introduction"
+          maxLength={300}
+          id={param}
           onChange={(e) => setData({ ...data, [param]: e.target.value })}
           value={data.introduction}
         ></textarea>
