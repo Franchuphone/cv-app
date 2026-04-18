@@ -4,6 +4,7 @@
   gap: var(--size);
   margin: var(--size) auto;
   width: 100%;
+  position: relative;
 
   @media (max-width: 800px) {
     grid-template-columns: 1fr;
@@ -14,6 +15,7 @@ main,
 header {
   border-radius: var(--border-rad);
   box-shadow: var(--shadow);
+  background-color: white;
 }
 
 main > :first-child,
@@ -22,13 +24,28 @@ header > div:first-child {
 }
 
 main > :first-child,
-header > div > *:first-child {
+header h2 {
   background-color: var(--dark-color);
   color: var(--light-color);
 }
 
+header {
+  > h2 {
+    width: 100%;
+  }
+
+  > h2:first-child {
+    border-radius: var(--border-rad) var(--border-rad) 0 0;
+  }
+
+  > h2:last-child {
+    border-radius: 0 0 var(--border-rad) var(--border-rad);
+  }
+}
+
 main {
   min-width: 70%;
+  max-height: fit-content;
 
   > div {
     padding: var(--size);
@@ -40,5 +57,49 @@ main {
 
   h1::after {
     content: "\00A0";
+  }
+
+  * {
+    animation: highlight 1s ease-out;
+  }
+}
+
+#button-pdf {
+  position: absolute;
+  bottom: -0.5vh;
+  right: 0;
+  height: max(5vw, 5vh);
+  aspect-ratio: 1/1;
+  padding: 0;
+
+  > img {
+    height: 100%;
+  }
+}
+
+@keyframes highlight {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  main,
+  main * {
+    visibility: visible;
+  }
+  main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }

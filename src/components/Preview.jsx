@@ -1,4 +1,5 @@
 import "../styles/Preview.css";
+import { usePDF } from "react-to-pdf";
 
 export function Preview({ personal, educational, profesional }) {
   return (
@@ -7,12 +8,11 @@ export function Preview({ personal, educational, profesional }) {
       <div className="preview-personal">
         <h2>Contact</h2>
         <div className="contact">
-          <span>{personal.phone}</span>
-          <span>{personal.email}</span>
+          <PreviewContact data={personal} />
         </div>
       </div>
       <div className="educational-preview">
-        <h2>Formations</h2>
+        <h2>Degrees</h2>
         {educational.map((data) => (
           <PreviewEdu data={data} key={data.id} />
         ))}
@@ -27,10 +27,22 @@ export function Preview({ personal, educational, profesional }) {
   );
 }
 
+function PreviewContact({ data }) {
+  return (
+    <>
+      {Object.entries(data)
+        .filter(([key]) => key !== "name")
+        .map(([key, value]) => (
+          <span key={key}>{value}</span>
+        ))}
+    </>
+  );
+}
+
 function PreviewEdu({ data }) {
   return (
     <div className="preview-edu">
-      <h4>{data.curriculum}</h4>
+      <h4>{data.degree}</h4>
       <p>{data.school}</p>
       <p>{data["year of obtention"]}</p>
     </div>
@@ -43,17 +55,25 @@ function PreviewExp({ data }) {
       <h4>{data.job}</h4>
       <p>{data.company}</p>
       <p>
-        {data.dates[0]} <br />→ {data.dates[1]}
+        {data.dates && (
+          <>
+            {data.dates[0]} <br />→ {data.dates[1]}
+          </>
+        )}
       </p>
       <p>
-        {data.skills.map((skill, index) => (
-          <PreviewSkill
-            skills={data.skills}
-            skill={skill}
-            index={index}
-            key={index}
-          />
-        ))}
+        {data.skills && (
+          <>
+            {data.skills.map((skill, index) => (
+              <PreviewSkill
+                skills={data.skills}
+                skill={skill}
+                index={index}
+                key={index}
+              />
+            ))}
+          </>
+        )}
       </p>
     </div>
   );

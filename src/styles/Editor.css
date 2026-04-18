@@ -6,57 +6,80 @@
   justify-items: center;
   text-align: center;
   row-gap: calc(0.5 * var(--size));
+
+  label:first-child {
+    margin-top: var(--size);
+  }
+
+  label:last-child {
+    margin-bottom: var(--size);
+  }
+}
+
+.educational-info,
+.professional-info {
+  box-shadow: var(--shadow-low);
+}
+
+.input-menu {
   animation: fadeIn 0.5s ease-out;
-
-  > h2 {
-    width: 100%;
-  }
-
-  > *:last-child {
-    padding-bottom: var(--size);
-  }
 }
 
-.personal-info > h2 {
-  border-radius: var(--border-rad) var(--border-rad) 0 0;
+#button-add,
+.editor-buttons > button {
+  color: var(--light-color);
+  background-color: var(--dark-color);
+  border-radius: var(--border-rad);
+  transition: background 0.5s ease;
+  width: 50%;
 }
 
-.professional-info > h2 {
-  border-radius: 0 0 var(--border-rad) var(--border-rad);
+#button-add:hover,
+.editor-buttons > button:hover {
+  color: var(--dark-color);
+  background-color: var(--light-color);
+  outline: 2px solid var(--dark-color);
+  transition: background 0.5s ease;
+}
+
+#button-add {
+  margin: var(--size) auto;
+  font-size: calc(1.2 * var(--size));
+  padding: auto 2em;
 }
 
 .editor-buttons {
-  margin-top: var(--size);
-  display: flex;
+  margin: var(--size) auto;
   gap: var(--size);
-  width: 60%;
+  width: 70%;
+}
 
-  button {
-    color: var(--light-color);
-    background-color: var(--dark-color);
-    border-radius: var(--border-rad);
-    transition: background 0.5s ease;
-    flex: 1;
-  }
+.skills-editor {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
 
-  button:hover {
-    color: var(--dark-color);
-    background-color: var(--light-color);
-    outline: 2px solid var(--dark-color);
-    transition: background 0.5s ease;
+.skills-buttons {
+  width: 100%;
+  display: flex;
+  place-content: center;
+  place-items: center;
+
+  img {
+    height: calc(2 * var(--size));
   }
 }
 
 @keyframes fadeIn {
-  from {
-    visibility: hidden;
-    height: 0;
+  0% {
+    block-size: 0;
+    content-visibility: hidden;
   }
-  90% {
-    visibility: none;
-  }
-  to {
-    visibility: visible;
-    height: fit-content;
+
+  100% {
+    block-size: auto;
+    content-visibility: auto;
   }
 }
