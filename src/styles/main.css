@@ -1,5 +1,7 @@
 :root {
-  --light-color: #e2f0ff;
+  --light-color: #f5f8fc;
+  --light-color-filt: brightness(0) saturate(100%) invert(92%) sepia(2%)
+    saturate(1852%) hue-rotate(196deg) brightness(107%) contrast(97%);
   --dark-color: rgb(34, 49, 82);
   --dark-color-filt: brightness(0) saturate(100%) invert(13%) sepia(9%)
     saturate(5743%) hue-rotate(189deg) brightness(99%) contrast(86%);
@@ -112,6 +114,12 @@ label {
 
 img[src*="svg"] {
   filter: var(--dark-color-filt);
+  transition: transform 0.2s ease-in;
+}
+
+img[src*="svg"]:hover {
+  transform: scale(1.2);
+  transition: transform 0.2s ease-in;
 }
 
 textarea {
