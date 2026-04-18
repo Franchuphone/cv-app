@@ -1,10 +1,26 @@
 .contact {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   padding: var(--size) 0;
+  row-gap: calc(0.5 * var(--size));
 
   > * {
-    width: 50%;
+    flex: 1;
+    text-align: auto;
+  }
+
+  > *:nth-child(even) {
+    text-align: right;
+  }
+
+  > *:nth-child(odd) {
+    text-align: left;
+  }
+
+  > *:last-child {
+    flex-basis: 100%;
+    text-align: center;
   }
 
   @media (max-width: 500px) {

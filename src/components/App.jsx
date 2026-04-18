@@ -2,7 +2,7 @@ import "../styles/App.css";
 import { Preview } from "./Preview";
 import { Personal, Educational, Professional } from "./Editor";
 import { ButtonAddCategory, ButtonPdf } from "./Buttons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { EducationalInfo, PersonalInfo, ProfessionalInfo } from "./Objects";
 
 function App() {
@@ -24,14 +24,30 @@ function App() {
       ["first skill", "second skill", "third skill"],
     );
 
-  console.log(InitialProfessional);
-
-  const [dataPersonal, setDataPersonal] = useState(InitialPersonal),
-    [dataEducational, setDataEducational] = useState([InitialEducational]),
-    [dataProfessional, setDataProfessional] = useState([InitialProfessional]),
+  const [dataPersonal, setDataPersonal] = useState(
+      () => JSON.parse(localStorage.getItem("dataPersonal")) || InitialPersonal,
+    ),
+    [dataEducational, setDataEducational] = useState(
+      () =>
+        JSON.parse(localStorage.getItem("dataEducational")) || [
+          InitialEducational,
+        ],
+    ),
+    [dataProfessional, setDataProfessional] = useState(
+      () =>
+        JSON.parse(localStorage.getItem("dataProfessionnal")) || [
+          InitialProfessional,
+        ],
+    ),
     [isVisible, setIsVisible] = useState("personal"),
     onToggle = (section) =>
       section === isVisible ? setIsVisible(null) : setIsVisible(section);
+
+  useEffect(() => {
+    localStorage.setItem("dataPersonal", JSON.stringify(dataPersonal));
+    localStorage.setItem("dataEducational", JSON.stringify(dataEducational));
+    localStorage.setItem("dataProfessional", JSON.stringify(dataProfessional));
+  }, [dataPersonal, dataEducational, dataProfessional]);
 
   return (
     <>
