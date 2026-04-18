@@ -6,7 +6,7 @@
 
 ---
 
-[Live Demo](https://cv-app.camano-daniel.workers.dev/) <!-- TODO: Add actual live demo link if available (e.g., GitHub Pages) -->
+[Live Demo](https://cv-app.franchuphone.workers.dev/) <!-- TODO: Add actual live demo link if available (e.g., GitHub Pages) -->
 
 </div>
 
